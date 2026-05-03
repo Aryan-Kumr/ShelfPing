@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// role of the user
+
+enum Role {
+  CUSTOMER
+  SHOP_OWNER
+}
+
+// unit of grocery items
+
+enum Unit {
+  KG
+  GRAM
+  LITRE
+  ML
+  PIECE
+  DOZEN
+  PACKET
+}
+
+// category of the items
+
+enum Category {
+  GROCERY
+  DAIRY
+  BEVERAGES
+  SNACKS
+  PERSONAL_CARE
+  HOUSEHOLD
+  OTHER
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  name String
+  email String @unique
+  password String
+  role Role @default(CUSTOMER)
+  shop Shop?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Shop {
+  id Int @id @default(autoincrement())
+  name String
+  address String
+  latitude Float
+  longitude Float
+  phone String?
+  isOpen Boolean  @default(true)
+  owner User @relation(fields: [ownerId], references: [id])
+  ownerId Int @unique
+  inventory Inventory[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime    @updatedAt 
+}
+
+model Inventory {
+  id Int @id @default(autoincrement())
+  itemName String
+  category Category @default(OTHER)
+  quantity Float
+  unit Unit
+  price Float
+  inStock Boolean
+  lowStock Boolean
+  imageURl String?
+  shop Shop @relation(fields: [shopId], references: [id])
+  shopId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([shopId])
+  @@index([itemName])
+}
+
+

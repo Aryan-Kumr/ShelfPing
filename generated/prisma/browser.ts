@@ -32,3 +32,18 @@ export type Shop = Prisma.ShopModel
  * 
  */
 export type Inventory = Prisma.InventoryModel
+/**
+ * Model Session
+ * 
+ */
+export type Session = Prisma.SessionModel
+/**
+ * Model Account
+ * 
+ */
+export type Account = Prisma.AccountModel
+/**
+ * Model Verification
+ * 
+ */
+export type Verification = Prisma.VerificationModel

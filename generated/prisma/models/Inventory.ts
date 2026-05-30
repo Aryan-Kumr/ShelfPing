@@ -27,21 +27,17 @@ export type AggregateInventory = {
 }
 
 export type InventoryAvgAggregateOutputType = {
-  id: number | null
   quantity: number | null
   price: number | null
-  shopId: number | null
 }
 
 export type InventorySumAggregateOutputType = {
-  id: number | null
   quantity: number | null
   price: number | null
-  shopId: number | null
 }
 
 export type InventoryMinAggregateOutputType = {
-  id: number | null
+  id: string | null
   itemName: string | null
   category: $Enums.Category | null
   quantity: number | null
@@ -49,14 +45,14 @@ export type InventoryMinAggregateOutputType = {
   price: number | null
   inStock: boolean | null
   lowStock: boolean | null
-  imageURl: string | null
-  shopId: number | null
+  imageUrl: string | null
+  shopId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type InventoryMaxAggregateOutputType = {
-  id: number | null
+  id: string | null
   itemName: string | null
   category: $Enums.Category | null
   quantity: number | null
@@ -64,8 +60,8 @@ export type InventoryMaxAggregateOutputType = {
   price: number | null
   inStock: boolean | null
   lowStock: boolean | null
-  imageURl: string | null
-  shopId: number | null
+  imageUrl: string | null
+  shopId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -79,7 +75,7 @@ export type InventoryCountAggregateOutputType = {
   price: number
   inStock: number
   lowStock: number
-  imageURl: number
+  imageUrl: number
   shopId: number
   createdAt: number
   updatedAt: number
@@ -88,17 +84,13 @@ export type InventoryCountAggregateOutputType = {
 
 
 export type InventoryAvgAggregateInputType = {
-  id?: true
   quantity?: true
   price?: true
-  shopId?: true
 }
 
 export type InventorySumAggregateInputType = {
-  id?: true
   quantity?: true
   price?: true
-  shopId?: true
 }
 
 export type InventoryMinAggregateInputType = {
@@ -110,7 +102,7 @@ export type InventoryMinAggregateInputType = {
   price?: true
   inStock?: true
   lowStock?: true
-  imageURl?: true
+  imageUrl?: true
   shopId?: true
   createdAt?: true
   updatedAt?: true
@@ -125,7 +117,7 @@ export type InventoryMaxAggregateInputType = {
   price?: true
   inStock?: true
   lowStock?: true
-  imageURl?: true
+  imageUrl?: true
   shopId?: true
   createdAt?: true
   updatedAt?: true
@@ -140,7 +132,7 @@ export type InventoryCountAggregateInputType = {
   price?: true
   inStock?: true
   lowStock?: true
-  imageURl?: true
+  imageUrl?: true
   shopId?: true
   createdAt?: true
   updatedAt?: true
@@ -234,7 +226,7 @@ export type InventoryGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 export type InventoryGroupByOutputType = {
-  id: number
+  id: string
   itemName: string
   category: $Enums.Category
   quantity: number
@@ -242,8 +234,8 @@ export type InventoryGroupByOutputType = {
   price: number
   inStock: boolean
   lowStock: boolean
-  imageURl: string | null
-  shopId: number
+  imageUrl: string | null
+  shopId: string
   createdAt: Date
   updatedAt: Date
   _count: InventoryCountAggregateOutputType | null
@@ -272,7 +264,7 @@ export type InventoryWhereInput = {
   AND?: Prisma.InventoryWhereInput | Prisma.InventoryWhereInput[]
   OR?: Prisma.InventoryWhereInput[]
   NOT?: Prisma.InventoryWhereInput | Prisma.InventoryWhereInput[]
-  id?: Prisma.IntFilter<"Inventory"> | number
+  id?: Prisma.StringFilter<"Inventory"> | string
   itemName?: Prisma.StringFilter<"Inventory"> | string
   category?: Prisma.EnumCategoryFilter<"Inventory"> | $Enums.Category
   quantity?: Prisma.FloatFilter<"Inventory"> | number
@@ -280,8 +272,8 @@ export type InventoryWhereInput = {
   price?: Prisma.FloatFilter<"Inventory"> | number
   inStock?: Prisma.BoolFilter<"Inventory"> | boolean
   lowStock?: Prisma.BoolFilter<"Inventory"> | boolean
-  imageURl?: Prisma.StringNullableFilter<"Inventory"> | string | null
-  shopId?: Prisma.IntFilter<"Inventory"> | number
+  imageUrl?: Prisma.StringNullableFilter<"Inventory"> | string | null
+  shopId?: Prisma.StringFilter<"Inventory"> | string
   createdAt?: Prisma.DateTimeFilter<"Inventory"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Inventory"> | Date | string
   shop?: Prisma.XOR<Prisma.ShopScalarRelationFilter, Prisma.ShopWhereInput>
@@ -296,7 +288,7 @@ export type InventoryOrderByWithRelationInput = {
   price?: Prisma.SortOrder
   inStock?: Prisma.SortOrder
   lowStock?: Prisma.SortOrder
-  imageURl?: Prisma.SortOrderInput | Prisma.SortOrder
+  imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   shopId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -305,7 +297,7 @@ export type InventoryOrderByWithRelationInput = {
 }
 
 export type InventoryWhereUniqueInput = Prisma.AtLeast<{
-  id?: number
+  id?: string
   AND?: Prisma.InventoryWhereInput | Prisma.InventoryWhereInput[]
   OR?: Prisma.InventoryWhereInput[]
   NOT?: Prisma.InventoryWhereInput | Prisma.InventoryWhereInput[]
@@ -316,8 +308,8 @@ export type InventoryWhereUniqueInput = Prisma.AtLeast<{
   price?: Prisma.FloatFilter<"Inventory"> | number
   inStock?: Prisma.BoolFilter<"Inventory"> | boolean
   lowStock?: Prisma.BoolFilter<"Inventory"> | boolean
-  imageURl?: Prisma.StringNullableFilter<"Inventory"> | string | null
-  shopId?: Prisma.IntFilter<"Inventory"> | number
+  imageUrl?: Prisma.StringNullableFilter<"Inventory"> | string | null
+  shopId?: Prisma.StringFilter<"Inventory"> | string
   createdAt?: Prisma.DateTimeFilter<"Inventory"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Inventory"> | Date | string
   shop?: Prisma.XOR<Prisma.ShopScalarRelationFilter, Prisma.ShopWhereInput>
@@ -332,7 +324,7 @@ export type InventoryOrderByWithAggregationInput = {
   price?: Prisma.SortOrder
   inStock?: Prisma.SortOrder
   lowStock?: Prisma.SortOrder
-  imageURl?: Prisma.SortOrderInput | Prisma.SortOrder
+  imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   shopId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -347,7 +339,7 @@ export type InventoryScalarWhereWithAggregatesInput = {
   AND?: Prisma.InventoryScalarWhereWithAggregatesInput | Prisma.InventoryScalarWhereWithAggregatesInput[]
   OR?: Prisma.InventoryScalarWhereWithAggregatesInput[]
   NOT?: Prisma.InventoryScalarWhereWithAggregatesInput | Prisma.InventoryScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Inventory"> | number
+  id?: Prisma.StringWithAggregatesFilter<"Inventory"> | string
   itemName?: Prisma.StringWithAggregatesFilter<"Inventory"> | string
   category?: Prisma.EnumCategoryWithAggregatesFilter<"Inventory"> | $Enums.Category
   quantity?: Prisma.FloatWithAggregatesFilter<"Inventory"> | number
@@ -355,42 +347,44 @@ export type InventoryScalarWhereWithAggregatesInput = {
   price?: Prisma.FloatWithAggregatesFilter<"Inventory"> | number
   inStock?: Prisma.BoolWithAggregatesFilter<"Inventory"> | boolean
   lowStock?: Prisma.BoolWithAggregatesFilter<"Inventory"> | boolean
-  imageURl?: Prisma.StringNullableWithAggregatesFilter<"Inventory"> | string | null
-  shopId?: Prisma.IntWithAggregatesFilter<"Inventory"> | number
+  imageUrl?: Prisma.StringNullableWithAggregatesFilter<"Inventory"> | string | null
+  shopId?: Prisma.StringWithAggregatesFilter<"Inventory"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Inventory"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Inventory"> | Date | string
 }
 
 export type InventoryCreateInput = {
+  id?: string
   itemName: string
   category?: $Enums.Category
   quantity: number
   unit: $Enums.Unit
   price: number
-  inStock: boolean
-  lowStock: boolean
-  imageURl?: string | null
+  inStock?: boolean
+  lowStock?: boolean
+  imageUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   shop: Prisma.ShopCreateNestedOneWithoutInventoryInput
 }
 
 export type InventoryUncheckedCreateInput = {
-  id?: number
+  id?: string
   itemName: string
   category?: $Enums.Category
   quantity: number
   unit: $Enums.Unit
   price: number
-  inStock: boolean
-  lowStock: boolean
-  imageURl?: string | null
-  shopId: number
+  inStock?: boolean
+  lowStock?: boolean
+  imageUrl?: string | null
+  shopId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type InventoryUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   itemName?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumCategoryFieldUpdateOperationsInput | $Enums.Category
   quantity?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -398,14 +392,14 @@ export type InventoryUpdateInput = {
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   inStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lowStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  imageURl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   shop?: Prisma.ShopUpdateOneRequiredWithoutInventoryNestedInput
 }
 
 export type InventoryUncheckedUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   itemName?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumCategoryFieldUpdateOperationsInput | $Enums.Category
   quantity?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -413,28 +407,29 @@ export type InventoryUncheckedUpdateInput = {
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   inStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lowStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  imageURl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  shopId?: Prisma.IntFieldUpdateOperationsInput | number
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shopId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type InventoryCreateManyInput = {
-  id?: number
+  id?: string
   itemName: string
   category?: $Enums.Category
   quantity: number
   unit: $Enums.Unit
   price: number
-  inStock: boolean
-  lowStock: boolean
-  imageURl?: string | null
-  shopId: number
+  inStock?: boolean
+  lowStock?: boolean
+  imageUrl?: string | null
+  shopId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type InventoryUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   itemName?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumCategoryFieldUpdateOperationsInput | $Enums.Category
   quantity?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -442,13 +437,13 @@ export type InventoryUpdateManyMutationInput = {
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   inStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lowStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  imageURl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type InventoryUncheckedUpdateManyInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   itemName?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumCategoryFieldUpdateOperationsInput | $Enums.Category
   quantity?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -456,8 +451,8 @@ export type InventoryUncheckedUpdateManyInput = {
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   inStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lowStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  imageURl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  shopId?: Prisma.IntFieldUpdateOperationsInput | number
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  shopId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -487,17 +482,15 @@ export type InventoryCountOrderByAggregateInput = {
   price?: Prisma.SortOrder
   inStock?: Prisma.SortOrder
   lowStock?: Prisma.SortOrder
-  imageURl?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   shopId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type InventoryAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   price?: Prisma.SortOrder
-  shopId?: Prisma.SortOrder
 }
 
 export type InventoryMaxOrderByAggregateInput = {
@@ -509,7 +502,7 @@ export type InventoryMaxOrderByAggregateInput = {
   price?: Prisma.SortOrder
   inStock?: Prisma.SortOrder
   lowStock?: Prisma.SortOrder
-  imageURl?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   shopId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -524,17 +517,15 @@ export type InventoryMinOrderByAggregateInput = {
   price?: Prisma.SortOrder
   inStock?: Prisma.SortOrder
   lowStock?: Prisma.SortOrder
-  imageURl?: Prisma.SortOrder
+  imageUrl?: Prisma.SortOrder
   shopId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type InventorySumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   price?: Prisma.SortOrder
-  shopId?: Prisma.SortOrder
 }
 
 export type InventoryCreateNestedManyWithoutShopInput = {
@@ -588,28 +579,29 @@ export type EnumUnitFieldUpdateOperationsInput = {
 }
 
 export type InventoryCreateWithoutShopInput = {
+  id?: string
   itemName: string
   category?: $Enums.Category
   quantity: number
   unit: $Enums.Unit
   price: number
-  inStock: boolean
-  lowStock: boolean
-  imageURl?: string | null
+  inStock?: boolean
+  lowStock?: boolean
+  imageUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type InventoryUncheckedCreateWithoutShopInput = {
-  id?: number
+  id?: string
   itemName: string
   category?: $Enums.Category
   quantity: number
   unit: $Enums.Unit
   price: number
-  inStock: boolean
-  lowStock: boolean
-  imageURl?: string | null
+  inStock?: boolean
+  lowStock?: boolean
+  imageUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -644,7 +636,7 @@ export type InventoryScalarWhereInput = {
   AND?: Prisma.InventoryScalarWhereInput | Prisma.InventoryScalarWhereInput[]
   OR?: Prisma.InventoryScalarWhereInput[]
   NOT?: Prisma.InventoryScalarWhereInput | Prisma.InventoryScalarWhereInput[]
-  id?: Prisma.IntFilter<"Inventory"> | number
+  id?: Prisma.StringFilter<"Inventory"> | string
   itemName?: Prisma.StringFilter<"Inventory"> | string
   category?: Prisma.EnumCategoryFilter<"Inventory"> | $Enums.Category
   quantity?: Prisma.FloatFilter<"Inventory"> | number
@@ -652,27 +644,28 @@ export type InventoryScalarWhereInput = {
   price?: Prisma.FloatFilter<"Inventory"> | number
   inStock?: Prisma.BoolFilter<"Inventory"> | boolean
   lowStock?: Prisma.BoolFilter<"Inventory"> | boolean
-  imageURl?: Prisma.StringNullableFilter<"Inventory"> | string | null
-  shopId?: Prisma.IntFilter<"Inventory"> | number
+  imageUrl?: Prisma.StringNullableFilter<"Inventory"> | string | null
+  shopId?: Prisma.StringFilter<"Inventory"> | string
   createdAt?: Prisma.DateTimeFilter<"Inventory"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Inventory"> | Date | string
 }
 
 export type InventoryCreateManyShopInput = {
-  id?: number
+  id?: string
   itemName: string
   category?: $Enums.Category
   quantity: number
   unit: $Enums.Unit
   price: number
-  inStock: boolean
-  lowStock: boolean
-  imageURl?: string | null
+  inStock?: boolean
+  lowStock?: boolean
+  imageUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type InventoryUpdateWithoutShopInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   itemName?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumCategoryFieldUpdateOperationsInput | $Enums.Category
   quantity?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -680,13 +673,13 @@ export type InventoryUpdateWithoutShopInput = {
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   inStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lowStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  imageURl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type InventoryUncheckedUpdateWithoutShopInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   itemName?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumCategoryFieldUpdateOperationsInput | $Enums.Category
   quantity?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -694,13 +687,13 @@ export type InventoryUncheckedUpdateWithoutShopInput = {
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   inStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lowStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  imageURl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type InventoryUncheckedUpdateManyWithoutShopInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   itemName?: Prisma.StringFieldUpdateOperationsInput | string
   category?: Prisma.EnumCategoryFieldUpdateOperationsInput | $Enums.Category
   quantity?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -708,7 +701,7 @@ export type InventoryUncheckedUpdateManyWithoutShopInput = {
   price?: Prisma.FloatFieldUpdateOperationsInput | number
   inStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
   lowStock?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  imageURl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -724,7 +717,7 @@ export type InventorySelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   price?: boolean
   inStock?: boolean
   lowStock?: boolean
-  imageURl?: boolean
+  imageUrl?: boolean
   shopId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -742,13 +735,13 @@ export type InventorySelectScalar = {
   price?: boolean
   inStock?: boolean
   lowStock?: boolean
-  imageURl?: boolean
+  imageUrl?: boolean
   shopId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type InventoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "itemName" | "category" | "quantity" | "unit" | "price" | "inStock" | "lowStock" | "imageURl" | "shopId" | "createdAt" | "updatedAt", ExtArgs["result"]["inventory"]>
+export type InventoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "itemName" | "category" | "quantity" | "unit" | "price" | "inStock" | "lowStock" | "imageUrl" | "shopId" | "createdAt" | "updatedAt", ExtArgs["result"]["inventory"]>
 export type InventoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   shop?: boolean | Prisma.ShopDefaultArgs<ExtArgs>
 }
@@ -759,7 +752,7 @@ export type $InventoryPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     shop: Prisma.$ShopPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: number
+    id: string
     itemName: string
     category: $Enums.Category
     quantity: number
@@ -767,8 +760,8 @@ export type $InventoryPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     price: number
     inStock: boolean
     lowStock: boolean
-    imageURl: string | null
-    shopId: number
+    imageUrl: string | null
+    shopId: string
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["inventory"]>
@@ -1141,7 +1134,7 @@ export interface Prisma__InventoryClient<T, Null = never, ExtArgs extends runtim
  * Fields of the Inventory model
  */
 export interface InventoryFieldRefs {
-  readonly id: Prisma.FieldRef<"Inventory", 'Int'>
+  readonly id: Prisma.FieldRef<"Inventory", 'String'>
   readonly itemName: Prisma.FieldRef<"Inventory", 'String'>
   readonly category: Prisma.FieldRef<"Inventory", 'Category'>
   readonly quantity: Prisma.FieldRef<"Inventory", 'Float'>
@@ -1149,8 +1142,8 @@ export interface InventoryFieldRefs {
   readonly price: Prisma.FieldRef<"Inventory", 'Float'>
   readonly inStock: Prisma.FieldRef<"Inventory", 'Boolean'>
   readonly lowStock: Prisma.FieldRef<"Inventory", 'Boolean'>
-  readonly imageURl: Prisma.FieldRef<"Inventory", 'String'>
-  readonly shopId: Prisma.FieldRef<"Inventory", 'Int'>
+  readonly imageUrl: Prisma.FieldRef<"Inventory", 'String'>
+  readonly shopId: Prisma.FieldRef<"Inventory", 'String'>
   readonly createdAt: Prisma.FieldRef<"Inventory", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Inventory", 'DateTime'>
 }

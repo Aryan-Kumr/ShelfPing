@@ -44,43 +44,49 @@ enum Category {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  name String
-  email String @unique
-  password String
-  role Role @default(CUSTOMER)
-  shop Shop?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            String       @id @default(cuid())
+  name          String
+  email         String    @unique
+  password      String?
+  role          Role      @default(CUSTOMER)
+  shop          Shop?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  emailVerified Boolean   @default(false)
+  image         String?   @db.Text
+  sessions      Session[]
+  accounts      Account[]
+
+  @@map("user")
 }
 
 model Shop {
-  id Int @id @default(autoincrement())
-  name String
-  address String
-  latitude Float
+  id        String         @id @default(cuid())
+  name      String
+  address   String
+  latitude  Float
   longitude Float
-  phone String?
-  isOpen Boolean  @default(true)
-  owner User @relation(fields: [ownerId], references: [id])
-  ownerId Int @unique
+  phone     String?
+  isOpen    Boolean     @default(true)
+  owner     User        @relation(fields: [ownerId], references: [id])
+  ownerId   String         @unique
   inventory Inventory[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime    @updatedAt 
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
 }
 
 model Inventory {
-  id Int @id @default(autoincrement())
-  itemName String
-  category Category @default(OTHER)
-  quantity Float
-  unit Unit
-  price Float
-  inStock Boolean
-  lowStock Boolean
-  imageURl String?
-  shop Shop @relation(fields: [shopId], references: [id])
-  shopId Int
+  id        String      @id @default(cuid())
+  itemName  String
+  category  Category @default(OTHER)
+  quantity  Float
+  unit      Unit
+  price     Float
+  inStock   Boolean  @default(true)
+  lowStock  Boolean  @default(false)
+  imageUrl  String?
+  shop      Shop     @relation(fields: [shopId], references: [id])
+  shopId    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -88,4 +94,50 @@ model Inventory {
   @@index([itemName])
 }
 
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?  @db.Text
+  userAgent String?  @db.Text
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  @@unique([token])
+  @@index([userId(length: 191)])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String    @db.Text
+  providerId            String    @db.Text
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?   @db.Text
+  refreshToken          String?   @db.Text
+  idToken               String?   @db.Text
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?   @db.Text
+  password              String?   @db.Text
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId(length: 191)])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String   @db.Text
+  value      String   @db.Text
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier(length: 191)])
+  @@map("verification")
+}

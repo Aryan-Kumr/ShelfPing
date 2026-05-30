@@ -27,41 +27,37 @@ export type AggregateShop = {
 }
 
 export type ShopAvgAggregateOutputType = {
-  id: number | null
   latitude: number | null
   longitude: number | null
-  ownerId: number | null
 }
 
 export type ShopSumAggregateOutputType = {
-  id: number | null
   latitude: number | null
   longitude: number | null
-  ownerId: number | null
 }
 
 export type ShopMinAggregateOutputType = {
-  id: number | null
+  id: string | null
   name: string | null
   address: string | null
   latitude: number | null
   longitude: number | null
   phone: string | null
   isOpen: boolean | null
-  ownerId: number | null
+  ownerId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
 
 export type ShopMaxAggregateOutputType = {
-  id: number | null
+  id: string | null
   name: string | null
   address: string | null
   latitude: number | null
   longitude: number | null
   phone: string | null
   isOpen: boolean | null
-  ownerId: number | null
+  ownerId: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -82,17 +78,13 @@ export type ShopCountAggregateOutputType = {
 
 
 export type ShopAvgAggregateInputType = {
-  id?: true
   latitude?: true
   longitude?: true
-  ownerId?: true
 }
 
 export type ShopSumAggregateInputType = {
-  id?: true
   latitude?: true
   longitude?: true
-  ownerId?: true
 }
 
 export type ShopMinAggregateInputType = {
@@ -222,14 +214,14 @@ export type ShopGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 }
 
 export type ShopGroupByOutputType = {
-  id: number
+  id: string
   name: string
   address: string
   latitude: number
   longitude: number
   phone: string | null
   isOpen: boolean
-  ownerId: number
+  ownerId: string
   createdAt: Date
   updatedAt: Date
   _count: ShopCountAggregateOutputType | null
@@ -258,14 +250,14 @@ export type ShopWhereInput = {
   AND?: Prisma.ShopWhereInput | Prisma.ShopWhereInput[]
   OR?: Prisma.ShopWhereInput[]
   NOT?: Prisma.ShopWhereInput | Prisma.ShopWhereInput[]
-  id?: Prisma.IntFilter<"Shop"> | number
+  id?: Prisma.StringFilter<"Shop"> | string
   name?: Prisma.StringFilter<"Shop"> | string
   address?: Prisma.StringFilter<"Shop"> | string
   latitude?: Prisma.FloatFilter<"Shop"> | number
   longitude?: Prisma.FloatFilter<"Shop"> | number
   phone?: Prisma.StringNullableFilter<"Shop"> | string | null
   isOpen?: Prisma.BoolFilter<"Shop"> | boolean
-  ownerId?: Prisma.IntFilter<"Shop"> | number
+  ownerId?: Prisma.StringFilter<"Shop"> | string
   createdAt?: Prisma.DateTimeFilter<"Shop"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Shop"> | Date | string
   owner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -289,8 +281,8 @@ export type ShopOrderByWithRelationInput = {
 }
 
 export type ShopWhereUniqueInput = Prisma.AtLeast<{
-  id?: number
-  ownerId?: number
+  id?: string
+  ownerId?: string
   AND?: Prisma.ShopWhereInput | Prisma.ShopWhereInput[]
   OR?: Prisma.ShopWhereInput[]
   NOT?: Prisma.ShopWhereInput | Prisma.ShopWhereInput[]
@@ -328,19 +320,20 @@ export type ShopScalarWhereWithAggregatesInput = {
   AND?: Prisma.ShopScalarWhereWithAggregatesInput | Prisma.ShopScalarWhereWithAggregatesInput[]
   OR?: Prisma.ShopScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ShopScalarWhereWithAggregatesInput | Prisma.ShopScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Shop"> | number
+  id?: Prisma.StringWithAggregatesFilter<"Shop"> | string
   name?: Prisma.StringWithAggregatesFilter<"Shop"> | string
   address?: Prisma.StringWithAggregatesFilter<"Shop"> | string
   latitude?: Prisma.FloatWithAggregatesFilter<"Shop"> | number
   longitude?: Prisma.FloatWithAggregatesFilter<"Shop"> | number
   phone?: Prisma.StringNullableWithAggregatesFilter<"Shop"> | string | null
   isOpen?: Prisma.BoolWithAggregatesFilter<"Shop"> | boolean
-  ownerId?: Prisma.IntWithAggregatesFilter<"Shop"> | number
+  ownerId?: Prisma.StringWithAggregatesFilter<"Shop"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Shop"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Shop"> | Date | string
 }
 
 export type ShopCreateInput = {
+  id?: string
   name: string
   address: string
   latitude: number
@@ -354,20 +347,21 @@ export type ShopCreateInput = {
 }
 
 export type ShopUncheckedCreateInput = {
-  id?: number
+  id?: string
   name: string
   address: string
   latitude: number
   longitude: number
   phone?: string | null
   isOpen?: boolean
-  ownerId: number
+  ownerId: string
   createdAt?: Date | string
   updatedAt?: Date | string
   inventory?: Prisma.InventoryUncheckedCreateNestedManyWithoutShopInput
 }
 
 export type ShopUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -381,33 +375,34 @@ export type ShopUpdateInput = {
 }
 
 export type ShopUncheckedUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isOpen?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ownerId?: Prisma.IntFieldUpdateOperationsInput | number
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   inventory?: Prisma.InventoryUncheckedUpdateManyWithoutShopNestedInput
 }
 
 export type ShopCreateManyInput = {
-  id?: number
+  id?: string
   name: string
   address: string
   latitude: number
   longitude: number
   phone?: string | null
   isOpen?: boolean
-  ownerId: number
+  ownerId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type ShopUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -419,14 +414,14 @@ export type ShopUpdateManyMutationInput = {
 }
 
 export type ShopUncheckedUpdateManyInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isOpen?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ownerId?: Prisma.IntFieldUpdateOperationsInput | number
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -456,10 +451,8 @@ export type ShopCountOrderByAggregateInput = {
 }
 
 export type ShopAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
-  ownerId?: Prisma.SortOrder
 }
 
 export type ShopMaxOrderByAggregateInput = {
@@ -489,10 +482,8 @@ export type ShopMinOrderByAggregateInput = {
 }
 
 export type ShopSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
   latitude?: Prisma.SortOrder
   longitude?: Prisma.SortOrder
-  ownerId?: Prisma.SortOrder
 }
 
 export type ShopScalarRelationFilter = {
@@ -540,14 +531,6 @@ export type FloatFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
 export type ShopCreateNestedOneWithoutInventoryInput = {
   create?: Prisma.XOR<Prisma.ShopCreateWithoutInventoryInput, Prisma.ShopUncheckedCreateWithoutInventoryInput>
   connectOrCreate?: Prisma.ShopCreateOrConnectWithoutInventoryInput
@@ -563,6 +546,7 @@ export type ShopUpdateOneRequiredWithoutInventoryNestedInput = {
 }
 
 export type ShopCreateWithoutOwnerInput = {
+  id?: string
   name: string
   address: string
   latitude: number
@@ -575,7 +559,7 @@ export type ShopCreateWithoutOwnerInput = {
 }
 
 export type ShopUncheckedCreateWithoutOwnerInput = {
-  id?: number
+  id?: string
   name: string
   address: string
   latitude: number
@@ -604,6 +588,7 @@ export type ShopUpdateToOneWithWhereWithoutOwnerInput = {
 }
 
 export type ShopUpdateWithoutOwnerInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -616,7 +601,7 @@ export type ShopUpdateWithoutOwnerInput = {
 }
 
 export type ShopUncheckedUpdateWithoutOwnerInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -629,6 +614,7 @@ export type ShopUncheckedUpdateWithoutOwnerInput = {
 }
 
 export type ShopCreateWithoutInventoryInput = {
+  id?: string
   name: string
   address: string
   latitude: number
@@ -641,14 +627,14 @@ export type ShopCreateWithoutInventoryInput = {
 }
 
 export type ShopUncheckedCreateWithoutInventoryInput = {
-  id?: number
+  id?: string
   name: string
   address: string
   latitude: number
   longitude: number
   phone?: string | null
   isOpen?: boolean
-  ownerId: number
+  ownerId: string
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -670,6 +656,7 @@ export type ShopUpdateToOneWithWhereWithoutInventoryInput = {
 }
 
 export type ShopUpdateWithoutInventoryInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
@@ -682,14 +669,14 @@ export type ShopUpdateWithoutInventoryInput = {
 }
 
 export type ShopUncheckedUpdateWithoutInventoryInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   latitude?: Prisma.FloatFieldUpdateOperationsInput | number
   longitude?: Prisma.FloatFieldUpdateOperationsInput | number
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isOpen?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ownerId?: Prisma.IntFieldUpdateOperationsInput | number
+  ownerId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -770,14 +757,14 @@ export type $ShopPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     inventory: Prisma.$InventoryPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: number
+    id: string
     name: string
     address: string
     latitude: number
     longitude: number
     phone: string | null
     isOpen: boolean
-    ownerId: number
+    ownerId: string
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["shop"]>
@@ -1151,14 +1138,14 @@ export interface Prisma__ShopClient<T, Null = never, ExtArgs extends runtime.Typ
  * Fields of the Shop model
  */
 export interface ShopFieldRefs {
-  readonly id: Prisma.FieldRef<"Shop", 'Int'>
+  readonly id: Prisma.FieldRef<"Shop", 'String'>
   readonly name: Prisma.FieldRef<"Shop", 'String'>
   readonly address: Prisma.FieldRef<"Shop", 'String'>
   readonly latitude: Prisma.FieldRef<"Shop", 'Float'>
   readonly longitude: Prisma.FieldRef<"Shop", 'Float'>
   readonly phone: Prisma.FieldRef<"Shop", 'String'>
   readonly isOpen: Prisma.FieldRef<"Shop", 'Boolean'>
-  readonly ownerId: Prisma.FieldRef<"Shop", 'Int'>
+  readonly ownerId: Prisma.FieldRef<"Shop", 'String'>
   readonly createdAt: Prisma.FieldRef<"Shop", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Shop", 'DateTime'>
 }
